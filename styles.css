@@ -244,9 +244,9 @@ input[type=range]::-moz-range-track {
 
 .metronome-container {
     position: relative;
-    height: 200px;
-    width: 100px;
-    margin: 50px auto;
+    height: 300px;
+    width: 200px;
+    margin: 20px 20px;
 }
 
 .metronome-arm {
@@ -254,14 +254,15 @@ input[type=range]::-moz-range-track {
     top: 10%;
     left: 50%;
     width: 4px;
-    height: 150px;
+    height: 220px;
     background: #333;
+    border-radius: 50%;
     transform-origin: top center;
     /* Animation only active when running */
 }
 
 .metronome-arm.active {
-    animation: swing var(--duration, 0.5s) ease-in-out infinite alternate;
+    animation: swing var(--duration, 0.5s) linear infinite alternate;
 }
 
 .weight {

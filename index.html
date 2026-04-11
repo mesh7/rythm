@@ -34,13 +34,13 @@
     <div class="container">
         <div class="metronome">
             <div class="bpm-display">
-                <span class="bpm-display-tempo">140</span>
+                <span id="bpm-value" class="bpm-display-tempo">140</span>
                 <span class="bpm-display-text">BPM</span>
             </div>
             <div class="tempo-text">Nice and Steady</div>
             <div class="tempo-controls">
                 <div class="tempo-adjust tempo-decrease">-</div>
-                <input class="slider" type="range" min="20" max="280" step="1">
+                <input class="slider" type="range" id="bpm-slider" min="20" max="280" step="1">
                 <div class="tempo-adjust tempo-increase">+</div>
             </div>
             <div class="metronome-button">Start</div>
@@ -53,7 +53,14 @@
                 <div class="bpm-controls-text">Beats per measure</div>
             </div>
         </div>
-        <img class="hero-image" alt="" src="resources/hero.png" />
+
+        <!-- Metronome animation -->
+        <div class="metronome-container">
+            <div class="pivot"></div>
+            <div class="metronome-arm" id="metronome-arm">
+                <div class="weight"></div>
+            </div>
+        </div>
     </div>
     <footer class="footer">
         <div class="text">

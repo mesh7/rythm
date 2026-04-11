@@ -9,6 +9,7 @@ const metronomeButton = document.querySelector(".metronome-button");
 const bpmDecrease = document.querySelector(".bpm-decrease");
 const bpmIncrease = document.querySelector(".bpm-increase");
 const bpmValue = document.querySelector(".bpm-value");
+const metronomeArm = document.querySelector(".metronome-arm");
 
 const clickOne = new Audio("./audio/beat1.mp3");
 const clickTwo = new Audio("./audio/beat2.mp3");
@@ -61,13 +62,6 @@ bpmIncrease.addEventListener("click", () => {
   count = 0;
 });
 
-function updateMetronome() {
-  tempoDisplay.textContent = bpm;
-  tempoSlider.value = bpm;
-  metronome.timeInterval = 60000 / bpm;
-  setText();
-}
-
 function setText() {
   if (bpm <= 40) {
     tempoTextString = "Super Slow";
@@ -103,10 +97,12 @@ metronomeButton.addEventListener("click", () => {
     metronome.start();
     isRunning = true;
     metronomeButton.textContent = "STOP";
+    metronomeArm.classList.add("active");
   } else {
     metronome.stop();
     isRunning = false;
     metronomeButton.textContent = "START";
+    metronomeArm.classList.remove("active");
   }
 });
 
@@ -125,3 +121,23 @@ function playClick() {
 }
 
 const metronome = new Timer(playClick, 60000 / bpm, { immediate: true });
+
+// Metronomer animation logic
+
+function updateMetronome() {
+  tempoDisplay.textContent = bpm;
+  tempoSlider.value = bpm;
+  metronome.timeInterval = 60000 / bpm;
+  setText();
+
+  // Calculate seconds per beat
+  const secondsPerBeat = 60 / bpm;
+
+  // Update the CSS variable
+  metronomeArm.style.setProperty("--duration", `${secondsPerBeat}s`);
+}
+
+tempoSlider.addEventListener("input", updateMetronome);
+
+// Initialize
+updateMetronome();

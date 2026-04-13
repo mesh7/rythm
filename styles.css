@@ -243,10 +243,25 @@ input[type=range]::-moz-range-track {
 /* Metronomre animation */
 
 .metronome-container {
+    display: flex;
+    flex-direction: column;
     position: relative;
     height: 300px;
     width: 200px;
     margin: 20px 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.metronome-anchor {
+    width: 100px;
+    height: 100px;
+    background-color: #BD3538;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .metronome-arm {
@@ -257,7 +272,7 @@ input[type=range]::-moz-range-track {
     height: 220px;
     background: #333;
     border-radius: 50%;
-    transform-origin: top center;
+    transform-origin: center;
     /* Animation only active when running */
 }
 
@@ -311,13 +326,15 @@ input[type=range]::-moz-range-track {
     .hero-image {
         display: none;
     }
+
+    .container {
+        margin: 0.5rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width: 425px) {
-    .container {
-        margin: 0.5rem 0 0 0;
-    }
-
     .header {
         font-size: 2rem;
         font-weight: 700;
@@ -359,4 +376,24 @@ input[type=range]::-moz-range-track {
     input[type=range] {
         width: 8rem;
     }
+
+    .metronome-container {
+        position: relative;
+        height: 90px;
+        width: 40px;
+        margin: 20px 20px;
+    }
+
+    .metronome-arm {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        width: 4px;
+        height: 90px;
+        background: #333;
+        border-radius: 50%;
+        transform-origin: top center;
+        /* Animation only active when running */
+    }
+
 }
